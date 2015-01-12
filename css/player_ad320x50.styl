@@ -1,0 +1,345 @@
+@import "nib"
+@import "vtube_player_style"
+@import "vtube_common"
+@import "ytvideo_size"
+
+video_detail_init_height = 90px;
+video_detail_full_height = 358px;
+video_detail_full_height_small = 218px;
+
+video_toolbar_height = nav_height;
+
+related_video_col_width = 235px;
+related_video_width = 227px;
+related_video_height = 177px;
+
+related_video_col_width_small = 208px;
+related_video_width_small = 200px;
+related_video_height_small = 170px;
+
+progress_bar_size = 18px;
+progress_bar_knob_size = 20px;
+
+player_layer()
+	padding: 0;
+	margin: 0;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	position: fixed;
+	
+.player_controller
+	player_layer();
+	background-color: black;
+
+.player_controller.ready #ctrl_overlay #ctrl_thumb
+	display:none;
+
+#player_wrapper
+	player_layer();
+	display: block;	
+
+#player
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	position:absolute;
+
+#ctrl_overlay
+	player_layer();
+	z-index: 100;
+	
+.player_controller.hide_ctrl > #ctrl_overlay > *:not(#ctrl_thumb)
+	opacity: 0;
+	
+#ctrl_overlay > *
+	transition: all 0.3s ease;
+#player_wrapper
+	transition: all 0.3s ease;
+	
+#ctrl_thumb 
+	player_layer();
+	bottom: video_detail_init_height;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+#ctrl_overlay > #nav 
+	background-color: nav_bg_color;
+	border-bottom: none;
+	
+#ctrl_overlay >	#player_hud
+	position: fixed;
+	top: video_toolbar_height;
+	bottom: video_detail_init_height;
+	left: 0px;
+	right: 0px;
+
+#player_hud > .col {
+	
+	width: 33.33%;
+	height: 100%;
+	float: left;
+	position: relative;
+	
+}
+
+#player_hud:after {
+	float: clear;
+}
+
+#player_detail
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: nav_bg_color;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	height: video_detail_init_height;	
+	
+
+#progress_bar
+	position: absolute;
+	width: 100%;
+	background-color: nav_bg_color;
+	height: progress_bar_size;
+	bottom: video_detail_init_height;
+	z-index: 10;
+
+#loading_progress_bar
+	position: absolute;
+	z-index: 11;
+	background-color: rgba(100,100,100,0.5);
+	height: progress_bar_size;
+	left: 0;
+	transition: all 0.3s ease;
+
+#playback_progress_bar
+	position: absolute;
+	z-index: 12;
+	background-color: hsl(210, 80%, 50%);
+	height: progress_bar_size;
+	left: 0;
+	transition: all 0.1s ease;
+
+#knob
+	position: absolute;
+	z-index: 13;
+	background-color: rgb(235,235,235);
+	width: progress_bar_knob_size;
+	height: progress_bar_knob_size;
+	border-radius: progress_bar_knob_size;
+	top:-1px;
+	transition: all 0.1s ease;
+	
+	
+.hud 
+	width: 100px;
+	height: 100px;
+	margin-top: -60px;
+	margin-left: -50px;
+	left: 50%;
+	top: 50%;
+	position: absolute;
+	background-color: rgba(0, 0, 0, .75);
+	border-radius: 10;
+	transition: width 0.3s, height 0.3s, margin-top 0.3s, margin-left 0.3s
+
+.hud:after
+	content: '';
+	position: absolute;
+	width: 100px
+	height: 100px
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 64px 64px;
+	transition: width 0.3s, height 0.3s
+
+.player_controller.ended #player_hud
+	.hud:after
+		background-image: url('../images/player/replay.svg');
+
+.player_controller.playing #player_hud
+	.hud:after
+		background-image: url('../images/player/pause.svg');
+
+.player_controller.paused #player_hud
+	.hud:after
+		background-image: url('../images/player/play.svg');
+
+.player_controller.buffering #player_hud
+	.hud:after
+		background-image: url('../images/player/loading.svg');
+		animation: rotating 2s linear infinite;
+		
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.player_controller.detail > #ctrl_overlay > #player_hud 
+	.hud
+		width: 56px;
+		height:56px;
+		margin-top: -36px;
+		margin-left: -28px;
+	.hud:after
+		width: 56px;
+		height: 56px;
+		background-size: 36px 36px;
+
+@media all and (min-width: 641px) and (max-width: 854px)
+	.player_controller.detail 
+		> #ctrl_overlay
+			> #ctrl_thumb
+				bottom: video_detail_full_height;
+			> #player_hud 
+				bottom: video_detail_full_height;
+			> #player_detail
+				height: video_detail_full_height;
+			> #progress_bar
+				bottom: video_detail_full_height;			
+		> #player_wrapper
+			bottom: video_detail_full_height;
+
+@media all and (max-width: 640px)
+	.player_controller.detail 
+		> #ctrl_overlay
+			> #ctrl_thumb 
+				bottom: video_detail_full_height_small;
+			> #player_hud 
+				bottom: video_detail_full_height_small;
+			> #progress_bar
+				bottom: video_detail_full_height_small;			
+			> #player_detail
+				height: video_detail_full_height_small;
+		> #player_wrapper
+			bottom: video_detail_full_height_small;
+
+//#ctrl_overlay.detail > #ctrl_thumb 
+//	@media all and (min-width: 641px) and (max-width: 854px)
+//		bottom: video_detail_full_height;
+//	@media all and (max-width: 640px)
+//		bottom: video_detail_full_height_small;
+//
+//#ctrl_overlay.detail > #player_hud 
+//	@media all and (min-width: 641px) and (max-width: 854px)
+//		bottom: video_detail_full_height;
+//	@media all and (max-width: 640px)
+//		bottom: video_detail_full_height_small;
+//	
+//#ctrl_overlay.detail > #player_detail
+//	@media all and (min-width: 641px) and (max-width: 854px)
+//		height: video_detail_full_height;
+//	@media all and (max-width: 640px)
+//		height: video_detail_full_height_small;
+
+#nav_back
+	width: nav_height !important;
+
+actionButton(src)
+	width: nav_height;
+	height: nav_height;
+	background: url(src) no-repeat center center;
+	background-size: 20px 20px
+
+
+#add2playlist
+	actionButton('../images/player/add.svg');
+
+#share2sns
+	actionButton('../images/player/share.svg');
+
+#switch_quality
+	actionButton('../images/player/hq.svg');
+
+#switch_cc
+	actionButton('../images/player/cc.svg');
+	
+#watch_later
+	actionButton('../images/player/watch_later.svg');
+
+.container {
+
+    width:100%;
+	min-height: 90px;
+    
+    background-color: rgba(50, 50, 50, 0.8);
+    opacity: 0.8;
+    color: white;
+    
+}
+
+.container:hover {
+	opacity: 1;
+}
+
+.left {
+    width:auto;
+	min-height: @nav_height;
+	height: 100%;
+    /*background:white;*/
+    overflow-x:hidden;
+}
+
+.right {
+	min-height: @nav_height;
+	height: 100%;
+    float:right;
+}
+
+.scrollview_y {
+	
+	padding-top: 5px;
+	
+	/*background-color: rgb(250, 250, 250);*/
+	
+	overflow-x: hidden;
+	overflow-y: scroll;
+		
+}
+
+.feed_list .yt_video {
+	margin: 0px 5px 5px 5px;
+}
+
+
+#video_detail {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#video_detail .title {
+	
+	font-size: 1.2em;
+	margin: 0px;
+	
+}
+
+feed_list#related_videos
+	margin-top 5px;
+	> ytvideo
+		margin: 0px 0px 10px 0px;
+		background-color: rgb(235, 235, 235);
+
+@media all and (min-width: 641px) and (max-width: 854px)
+	.right
+		width: related_video_col_width;
+	feed_list#related_videos
+		> ytvideo
+			width: related_video_width;
+			height: related_video_height;
+			> .thumb
+				width: related_video_width;
+				height: 117px;
+
+@media all and (max-width: 640px)
+	.right
+		width: related_video_col_width_small;	

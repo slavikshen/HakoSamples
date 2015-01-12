@@ -1,0 +1,86 @@
+icon {
+	display: block;
+	background-size: contain !important;
+	background-position: center center;
+	background-repeat: no-repeat;
+	fill: rgb(240,240,240);
+}
+
+icon.play {
+	background-image: url('../images/player/play.png');
+}
+
+icon.pause {
+	background-image: url('../images/player/pause.png');	
+}
+
+icon.return  {
+	background-image: url('../images/nav/arrow-back.svg');	
+}
+
+icon.search_gray {
+	background-image: url('../images/nav/nav_search.png');		
+}
+
+icon.search_blue {
+	background-image: url('../images/nav/icon_searchblue.png');		
+}
+
+icon.trends {
+	background-image: url('../images/nav/icon_trends.png');
+}
+
+icon.recommended {
+	background-image: url('../images/nav/icon_recommended.png');
+}
+
+icon.sub_all {
+	background-image: url('../images/nav/icon_sub_all.png');
+}
+
+icon.sub_history {
+	background-image: url('../images/nav/icon_sub_history.png');
+}
+
+icon.watchlater {
+	background-image: url('../images/nav/icon_watchlater.png');
+}
+
+icon.mostpopular {
+	background-image: url('../images/nav/icon_mostpopular.png');
+}
+
+icon.channel_playlists {
+	background-image: url('../images/nav/icon_channel_playlists.png');
+}
+
+icon.crashcourse {
+	background-image: url('../images/nav/crashcourse.jpg');
+}
+
+icon.scottprovidence {
+	background-image: url('../images/nav/scottprovidence.jpg');
+}
+
+icon.harvard {
+	background-image: url('../images/nav/harvard.jpg');
+}
+
+icon.channel {
+	background-image: url('../images/nav/icon_channel.png');
+}
+
+icon.gmap {
+	background-image: url('../images/nav/gmap.png');
+}
+
+icon.bolt {
+	background-image: url('../images/nav/bolt.png');
+}
+
+icon.camera {
+	background-image: url('../images/nav/camera.png');
+}
+
+
+				

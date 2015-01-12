@@ -1,0 +1,55 @@
+@media all and (max-width: 854px) {
+  feed_list {
+    margin-left: 23px;
+  }
+  feed_list ytvideo {
+    margin: 0px 0px 10px 15px;
+  }
+  feed_list ytchannel {
+    margin: 0px 0px 10px 15px;
+  }
+}
+@media all and (min-width: 855px) and (max-width: 1023px) {
+  feed_list {
+    margin-left: 0px;
+  }
+  feed_list ytvideo {
+    margin: 0px 0px 10px 10px;
+  }
+  feed_list ytchannel {
+    margin: 0px 0px 10px 10px;
+  }
+  ytvideo {
+    width: 227px;
+    height: 177px;
+  }
+  ytvideo .thumb {
+    width: 227px;
+    height: 117px;
+  }
+  ytvideo .time {
+    bottom: 62px;
+  }
+}
+@media all and (min-width: 1024px) {
+  feed_list {
+    margin-left: 0px;
+  }
+  feed_list ytvideo {
+    margin: 0px 0px 10px 10px;
+  }
+  feed_list ytchannel {
+    margin: 0px 0px 10px 10px;
+  }
+  ytvideo {
+    width: 242px;
+    height: 192px;
+  }
+  ytvideo .thumb {
+    width: 242px;
+    height: 132px;
+  }
+  ytvideo .time {
+    bottom: 62px;
+  }
+}

@@ -1,0 +1,416 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue";
+	font-size: 16px;
+}
+
+#window {
+	background-color: black;
+	overflow: hidden;
+}
+
+
+.top {
+
+	position: absolute;
+	top: 0;
+	
+}
+
+.fullscreen_scrollview_y {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	width: 100%;
+	height: 100%;
+	
+	background-color: rgb(250, 250, 250);
+	
+	/*border-radius: 5px;*/
+	
+	overflow-x: hidden;
+	overflow-y: scroll;
+		
+}
+
+.feed_list {
+	
+	display: block;
+	width: 100%;
+	/*min-height: 100%;*/
+	margin-top: 54px;
+	
+}
+
+.feed_list .yt_video {
+	margin: 0px 0px 10px 10px;
+}
+
+#nav {
+	
+	width: 100%;
+	height: 44px;
+	background-color: rgba(230,230,230,0.8);
+	z-index: 900;	
+	
+	border-bottom: 1px solid rgba(50,50,50,0.3);
+}
+
+.nav_item {
+	font-size: 1em;
+	display: block;
+	color: rgb(50,50,50);
+	height: 24px;
+/*	margin-top: 7px;
+	margin-left: 7px;*/
+	padding: 10px 3px 10px 10px;
+	float: left;
+	vertical-align: text-top;
+	position: relative;
+	/*border-radius: 3px;*/
+	/*background-color: rgba(200,200,200,0.5);*/
+}
+
+.nav_item.highlighted {
+	background-color: rgba(250,250,250,0.8) !important;
+}
+
+.nav:after {
+	float: clear;	
+}
+
+.nav_item div {
+
+	display: block;
+	float: left;
+	margin-top: 4px;
+	margin-right: 4px;
+}
+
+#cat_button img {
+	
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+	border-radius: 3px;
+	float: left;
+
+}
+
+#nav .sep {
+	display: block;
+	height: 44px;		
+	width: 1px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+
+	
+	background-color: rgba(50,50,50,0.3);
+}
+
+#nav.folded {
+	-webkit-animation: hideNav 0.5s; /* Chrome, Safari, Opera */
+	animation: hideNav 0.5s;
+	animation-fill-mode:forwards;
+	top: -45px;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes hideNav {
+    from {
+	    top: 0px;
+    }
+    to {
+    	top: -45px;
+    }
+}
+
+@keyframes hideNav {
+	from {
+	    top: 0px;
+	}
+	to {
+		top: -45px;
+	}
+}
+
+#nav.unfolded {
+	-webkit-animation: showNav 0.5s; /* Chrome, Safari, Opera */
+	animation: showNav 0.5s;
+	animation-fill-mode:forwards;
+	top: 0px;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes showNav {
+    from {
+	    top: -45px;
+    }
+    to {
+    	top: 0px;
+    }
+}
+
+@keyframes showNav {
+	from {
+	    top: -45px;
+	}
+	to {
+		top: 0px;
+	}
+}
+
+#cat_button {
+	width: 224px;
+}
+
+#cat_button:after {
+	display: block;
+	background: url('../images/nav/nav_exp.png') no-repeat left top;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 14px;
+	right: 6px;
+	content: "";
+}
+
+#search img {
+	
+	width: 16px;
+	height: 16px;
+	margin-top: 5px;
+	margin-right: 7px;
+	float: left;
+
+}
+
+#menu {
+	width: 30px;
+	height: 44px;
+	background: url('../images/nav/nav_menu.png') no-repeat center center;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 0px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.blur {
+	
+	-webkit-filter: blur(1px);
+	-moz-filter: blur(1px);
+	-o-filter: blur(1px);
+	-ms-filter: blur(1px);
+	filter: blur(1px);
+	
+}
+
+.hidden {
+	display: none;
+}
+
+.popup {
+	z-index: 110;
+	background-color: rgba(230,230,230,0.9);
+	box-shadow: 0px 10px 5px #888888;
+	border: 1px solid rgba(50,50,50,0.3);
+	overflow-y: scroll;
+}
+
+.poped {
+    -webkit-animation: showPopup 0.3s; /* Chrome, Safari, Opera */
+    animation: showPopup 0.3s;
+    animation-fill-mode:both;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes showPopup {
+    from {
+    	-ms-transform: translateY(-600); /* IE 9 */
+    	-webkit-transform: translateY(-600); /* Chrome, Safari, Opera */
+    	transform: translateY(-600);
+    	opacity: 0;
+    }
+    to {
+		-ms-transform: translateY(0); /* IE 9 */
+		-webkit-transform: translateY(0); /* Chrome, Safari, Opera */
+		transform: translateY(0);
+    	opacity: 1;
+    }
+}
+
+@keyframes showPopup {
+    from {
+    	-ms-transform: translateY(-600); /* IE 9 */
+    	-webkit-transform: translateY(-600); /* Chrome, Safari, Opera */
+    	transform: translateY(-600);
+    	opacity: 0;
+    }
+    to {
+		-ms-transform: translateY(0); /* IE 9 */
+		-webkit-transform: translateY(0); /* Chrome, Safari, Opera */
+		transform: translateY(0);
+    	opacity: 1;
+    }
+}
+
+.content_blur {
+	
+	width: 100%;
+	height: 100%;
+	
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	
+	z-index: 100;
+	background-color: rgba(100,100,100,0.3);
+}
+
+#cat {
+	width: 237px;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 44px;
+	border-left: 0px;
+
+}
+
+#opt_menu {
+
+	width: 237px;
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	top: 44px;
+	border-right: 0px;
+	
+}
+
+.cat_list {
+	display: block;
+	width: 100%;
+}
+
+.cat_list div {
+	display: block;
+}
+
+.cat_list .header {
+	
+	padding-left: 10px;
+	padding-top: 5px;
+	height: 20px;
+	font-size: 0.8em;
+	color: rgba(230,230,230,1);
+	background-color: rgba(100,100,100,0.9);
+	
+}
+
+.cat_list .row {
+	
+	height: 30px;
+	padding-left: 10px;
+	padding-top: 8px;
+	
+	color: rgba(50,50,50,1);
+	background-color: transparent;
+	
+	/*border-bottom: 1px solid rgba(50,50,50,0.3);*/
+	
+}
+
+.cat_list .row:last-of-type {
+	margin-bottom: 88px;
+}
+
+.cat_list .row:last-of-type {
+	border-bottom: 0px;
+}
+
+.cat_list .row img {
+	
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+	border-radius: 3px;
+	float: left;
+	
+}
+
+.cat_list .row img + div {
+	display: block;
+	float: left;
+	margin-top: 3px;
+	margin-right: 4px;
+}
+
+.cat_list .row div + div {
+	display: block;
+	font-size: 0.7em;
+	font-style: bold;
+	color: hsl(210, 80%, 50%);
+	float: right;
+	margin-right: 5px;
+	position: relative;
+	top: -15px;
+}
+
+
+.cat_list .selected {
+    -webkit-animation: rowSelection 0.5s; /* Chrome, Safari, Opera */
+    animation: rowSelection 0.5s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rowSelection {
+    0% {
+    	color: rgba(50,50,50,1);
+	    background-color: transparent;
+    }
+    50% {
+    	color: rgba(230,230,230,1);
+    	background-color: hsl(210, 80%, 50%);
+    }
+    100% {
+    	color: rgba(50,50,50,1);
+        background-color: transparent;
+    }
+}
+
+/* Standard syntax */
+@keyframes rowSelection {
+	0% {
+		color: rgba(50,50,50,1);
+	    background-color: transparent;
+	}
+	50% {
+		color: rgba(230,230,230,1);
+		background-color: hsl(210, 80%, 50%);
+	}
+	100% {
+		color: rgba(50,50,50,1);
+	    background-color: transparent;
+	}
+}
+
+.nav_item input {
+	margin-top: -1px;
+	font-size: 1em;
+	font-style: none;
+	color: rgb(150, 150, 150);
+    outline: 0;
+    border:none;
+    background-color: transparent;
+}
+
+.nav_item input:focus{
+    outline: 0;
+}

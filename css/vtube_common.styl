@@ -1,0 +1,226 @@
+@import "ytvideo.css"
+@import "icons.css"
+@import "popover.css"
+@import "table.css"
+
+.top {
+
+	position: absolute;
+	top: 0;
+	
+}
+
+.fullscreen_scrollview_y {
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	max-width: 100%;
+	width: 100%;
+	height: 100%;
+	
+	background-color: rgb(250, 250, 250);
+	
+	/*border-radius: 5px;*/
+	
+	overflow-x: hidden;
+	overflow-y: scroll;
+		
+}
+
+feed_list {
+	
+	display: block;
+	width: 100%;
+	margin-top: nav_height+10;
+	
+}
+
+#nav {
+	
+	overflow: hidden;
+	width: 100%;
+	height: nav_height;
+	background-color: nav_bg_color;
+	z-index: 100;		
+	border-bottom: 1px solid rgba(50,50,50,0.3);
+}
+
+.nav_item {
+	font-size: 1em;
+	display: block;
+	color: rgb(50,50,50);
+	float: left;
+	position: relative;
+	height: nav_height;
+}
+
+.nav_item.highlighted {
+	background-color: rgba(250,250,250,0.8) !important;
+}
+
+.nav:after {
+	float: clear;	
+}
+
+.nav_item title {
+
+	display: block;
+	float: left;
+	margin-top: 15px;
+	margin-right: 10px;
+}
+
+
+.nav_item icon {
+
+	width: 24px;
+	height: 24px;
+	
+	margin-top: 13px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-radius: 3px;
+	float: left;
+	
+}
+
+.nav_item input {
+	display: block;
+	float: left;
+	margin-top: -22px;
+	margin-left: 38px;
+	font-size: 1em;
+	font-style: none;
+	color: rgb(150, 150, 150);
+    outline: 0;
+    border:none;
+    background-color: transparent;
+    width: 200px;
+}
+
+.nav_item input:focus{
+    outline: 0;
+}
+
+#nav .sep {
+	display: block;
+	height: nav_height;		
+	width: 1px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	background-color: rgba(50,50,50,0.3);
+}
+
+#nav .h_sep {
+	display: block;
+	height: 1px;		
+	width: 100%;
+	padding: 0px;
+	margin: 2px 0px;
+	float: left;
+	
+	background-color: rgba(50,50,50,0.15);
+}
+
+#cat_button {
+	width: cat_button_width;
+}
+
+#nav > .nav_item:first-child {
+	width: cat_button_width+10;
+	height: nav_height;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+#cat_button:after {
+	display: block;
+	background: url('../images/nav/nav_exp.png') no-repeat left top;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top:16px;
+	right: 6px;
+	content: "";
+}
+
+#menu {
+	width: 30px;
+	height: nav_height;
+	background: nav_bg_color url('../images/nav/nav_menu.png') no-repeat center center;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 0px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+}
+
+#ad_banner {
+	padding: 0px;
+	margin: 0px;
+	position: absolute;
+	right: 30px;
+	width: ad_width;
+	height: nav_height;
+	background: ad_src no-repeat left top;
+}
+
+#cat {
+	width: cat_button_width+10;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: nav_height;
+	border-left: 0px;
+
+}
+
+#opt_menu {
+
+	width: 247px;
+	height: 100%;
+	position: absolute;
+	right: 0px;
+	top: nav_height;
+	border-right: 0px;
+	
+}
+
+/* generate thumb samples */
+for i in (0..9)
+	ytvideo:nth-of-type(10n+{i+1}) > .thumb
+		background-image: url('../images/videos/thumb_'+i+'.png');
+
+ytchannel:nth-of-type(10n+1) > .thumb {
+	background-image: url('../images/nav/crashcourse.jpg');
+}
+
+ytchannel:nth-of-type(10n+2) > .thumb {
+	background-image: url('../images/nav/harvard.jpg');
+}
+
+ytchannel:nth-of-type(10n+3) > .thumb {
+	background-image: url('../images/nav/scottprovidence.jpg');
+}
+
+ytchannel:nth-of-type(10n+4) > .thumb {
+	background-image: url('../images/nav/59secs.jpg');
+}
+
+ytchannel:nth-of-type(10n+5) > .thumb {
+	background-image: url('../images/nav/kendo.jpg');
+}
+
+ytchannel:nth-of-type(10n+6) > .thumb {
+ 	background-image: url('../images/nav/wolfram.jpg');
+ }
+
+ytchannel:nth-of-type(10n+7) > .thumb {
+	background-image: url('../images/nav/spacex.jpg');
+}

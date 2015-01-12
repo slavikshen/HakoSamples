@@ -1,0 +1,73 @@
+
+
+.device_lt {
+	
+	width: 159px;
+	height: 89px;
+	background: url('../images/landscape/frame_lt.png') no-repeat right top;
+	
+}
+
+.device_rt {
+	
+	width: 162px;
+	height: 89px;
+	background: url('../images/landscape/frame_rt.png') no-repeat left top;
+	
+}
+
+
+.device_lb {
+
+	width: 159px;
+	height: 277px;
+	background: url('../images/landscape/frame_lb.png') no-repeat right top;
+	
+}
+
+
+.device_rb {
+	
+	width: 162px;
+	height: 277px;
+	background: url('../images/landscape/frame_rb.png') no-repeat left top;
+	
+}
+
+.device_t {
+
+	height: 89px;
+	background: url('../images/landscape/frame_t.png') no-repeat left bottom;
+	background-size: 960px 89px;
+	
+}
+
+.device_b {
+
+	height: 277px;
+	background: url('../images/landscape/frame_b.png') no-repeat left top;
+	background-size: 960px 277px;
+	
+}
+
+
+.device_l {
+	
+	width: 159px;	
+	background: url('../images/landscape/frame_l.png') no-repeat right top;	
+	
+}
+
+.device_r {
+	
+	width: 162px;
+	background: url('../images/landscape/frame_r.png') no-repeat left top;
+	background-size: 162px 600px;
+	
+}
+
+.device_m {
+
+	overflow:hidden;
+
+}

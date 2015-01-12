@@ -1,0 +1,365 @@
+<link type='text/css' rel='stylesheet' href='./samples/css/player_ad320x50.css'>
+<UIViewController class='player_controller'>
+	<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+	<div id='player_wrapper'>
+		<div id="player">
+		</div>
+	</div>
+	
+	<div id='ctrl_overlay'>
+		<div id='ctrl_thumb'></div>   		
+		<div id='nav' class='top player_toolbar'>
+			<div class='nav_item' id='nav_back'>
+				<icon class="return"></icon>
+			</div>
+			<div class='nav_item' id='add2playlist'></div>
+			<div class='nav_item' id='share2sns'></div>
+			<div class='nav_item' id='switch_quality'></div>
+			<div class='nav_item' id='switch_cc'></div>
+			<div class='nav_item' id='watch_later'></div>
+			<div class='nav_item' id='ad_banner'></div>
+			<div class='nav_item' id='menu'></div>
+		</div>
+		<div id='player_hud'>
+			<div class="col">
+			</div>
+			<div class="col">
+				<div class='hud'>					
+				</div>
+			</div>
+			<div class="col">
+			</div>
+		</div>
+		<div id='progress_bar'>
+			<div id='loading_progress_bar'></div>
+			<div id='playback_progress_bar'></div>
+			<div id='knob'></div>
+		</div>
+		<div id='player_detail'>
+			<div class='container'>
+				<feed_list id='related_videos' class="right scrollview_y">
+					<ytvideo data-vid='AcaBI_I0Td0'>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>SpaceX launches</div>
+						<div class='author'>by spaceX</div>
+						<div class="statistic">2k views. 1 week ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>15:31</div>
+						<div class='title'>Witch Hunter</div>
+						<div class='author'>by WB</div>
+						<div class="statistic">12M views. 2 weeks ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>What's the fu**</div>
+						<div class='author'>by WTF</div>
+						<div class="statistic">2k views. 3 weeks ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>Show me the money</div>
+						<div class='author'>by WB</div>
+						<div class="statistic">2k views. 1 week ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>Spicy femal singer</div>
+						<div class='author'>by Vevo</div>
+						<div class="statistic">2M views. 2 days ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>SpaceX launches</div>
+						<div class='author'>by spaceX</div>
+						<div class="statistic">2k views. 1 week ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>Star Wars Ep 7</div>
+						<div class='author'>by Disney</div>
+						<div class="statistic">30M views. 2 weeks ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>Star Wars Ep 7 Trailer</div>
+						<div class='author'>by Disney</div>
+						<div class="statistic">21M views. 1 week ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>Globalization II</div>
+						<div class='author'>by CrashCourse</div>
+						<div class="statistic">2k views. 1 day ago</div>				
+					</ytvideo>
+					<ytvideo>
+						<div class='thumb'>
+						</div>				
+						<div class='time'>5:31</div>
+						<div class='title'>Remembering and Forgetting</div>
+						<div class='author'>by CrashCourse</div>
+						<div class="statistic">3k views. 4 days ago</div>				
+					</ytvideo>
+				</feed_list>
+				<div id='video_detail' class='left scrollview_y'>
+					<div class='title'>2014 | SpaceX Year in Review</div>
+					<div class='channel_detail'>
+						
+					</div>
+					<div class='description'>
+						<p>Published on Dec 31, 2014
+						Relive SpaceX’s 2014 highlights: launching rockets, landing stages, and unveiling our next generation crewed spacecraft.</p>
+					</div>
+				</div>
+			</div>
+		</div>    	
+	</div>
+	<script>
+		
+		var player = null;
+		var kAllPlayerStates = ['ended', 'playing', 'paused', 'buffering'];
+		var kPlayerState_Unstarted = -1;
+		var kPlayerState_Ended = 0;
+		var kPlayerState_Playing = 1;
+		var kPlayerState_Paused = 2;
+		var kPlayerState_Buffering = 3;
+		
+		var _ctrlAutoHideTimer = null;
+		var _playbackTimer = null;
+		
+		function _doLoadVideo(vid) {
+			
+			console.log('load video ' + vid);
+			if( null === player ) {
+				player = new YT.Player('player', {
+			  		videoId: vid,
+			  		events: {
+			  		  'onReady': onPlayerReady,
+			  		  'onStateChange': onPlayerStateChange
+			  		},
+			        playerVars: {
+			        	'autohide': 1,
+			        	'autoplay': 0,
+			        	'fs': 0,
+			        	'controls': 0,
+			        	'enablejsapi': 1,
+			        	'showinfo': 0,
+			        	'rel': 1,
+			        	'modestbranding': 0,
+			        	'loop': 0,
+			        	
+			        }
+			  	});
+			} else {
+			  	player.loadVideoById(vid, 0, "large")
+			}
+			
+			$('#player').attr('width','');
+			$('#player').attr('height','');
+			
+		}
+		
+		function loadVideo(vid) {
+		
+			var pcontroller = $('.player_controller');
+			pcontroller.removeClass('ready');
+			pcontroller.addClass('buffering');
+		
+			var bgImageURL = 'url(http://img.youtube.com/vi/%s/hqdefault.jpg)'.format(vid);
+			console.log('thumb image url ' + bgImageURL);
+			$('#ctrl_thumb').css('background-image',bgImageURL);
+			
+				if( undefined === window['YT'] ) {
+					console.log('load youtube api');
+					$.getScript( "https://www.youtube.com/iframe_api", function () {
+						window.setTimeout(function () {
+							_doLoadVideo(vid);
+						}, 100);
+					});
+					return;
+				}
+				
+				window.setTimeout(function () {
+				_doLoadVideo(vid);
+				}, 100);
+			}
+			  
+		function onYouTubeIframeAPIReady() {
+			console.log('iframe ready');
+		}
+		
+		// 4. The API will call this function when the video player is ready.
+		function onPlayerReady(event) {
+			console.log('player ready');
+			$('.player_controller').addClass('ready');
+			player.playVideo();
+			
+			prepareAutoHideCtrl(1000);
+		}
+		
+		// 5. The API calls this function when the player's state changes.
+		//    The function indicates that when playing a video (state=1),
+		//    the player should play for six seconds and then stop.
+		//      var done = false;
+		function onPlayerStateChange(event) {
+			
+			var state = player.getPlayerState();
+			if( state >= 0 && state < kAllPlayerStates.length ) {
+				var name = kAllPlayerStates[state];
+				console.log('player state change to ' + name);
+				var pcontroller = clearPlayerControllerState().addClass(name);
+				if( state != kPlayerState_Playing && pcontroller.hasClass('hide_ctrl') ) {
+					pcontroller.removeClass('hide_ctrl');
+				}			
+			} else {
+				clearPlayerControllerState();
+			}	
+			
+			if( state == kPlayerState_Playing ) {
+				if( null == _playbackTimer ) {
+					_playbackTimer = window.setInterval(_playbackTickle, 1000/33);
+				}
+			} else if( null != _playbackTimer ) {
+				window.clearInterval(_playbackTimer);
+				_playbackTimer = null;
+			}
+			
+		}
+				
+		function stop() {
+			player.stopVideo();
+		}
+		
+		function clearPlayerControllerState() {
+			var pcontroller = $('.player_controller');
+			for (index = 0; index < kAllPlayerStates.length; ++index) {
+				pcontroller.removeClass(kAllPlayerStates[index]);
+			}
+			return pcontroller;	
+		}
+		
+		function _toggleAutoHideCtrl() {
+			console.log('_toggleAutoHideCtrl');
+			var pcontroller = $('.player_controller');
+			if( !pcontroller.hasClass('detail') && 
+				pcontroller.hasClass('ready') &&
+				kPlayerState_Playing == player.getPlayerState() ) {
+				pcontroller.addClass('hide_ctrl');
+			} else if( kPlayerState_Playing == player.getPlayerState() ) {
+				prepareAutoHideCtrl(1000);
+			}
+		}
+		
+		function prepareAutoHideCtrl(delay) {
+		
+			if( _ctrlAutoHideTimer ) {
+				window.clearTimeout(_ctrlAutoHideTimer);
+			}
+		
+			console.log('prepareAutoHideCtrl ' + delay);
+			_ctrlAutoHideTimer = window.setTimeout(_toggleAutoHideCtrl, delay);
+		}
+		
+		function playOrPause() {
+			console.log('playOrPause');
+			var pcontroller = $('.player_controller');
+			if( !pcontroller.hasClass('hide_ctrl') ) {
+				// switch playback state
+				var state = player.getPlayerState();
+				if( state == kPlayerState_Playing ) {
+					player.pauseVideo();	
+				} else {
+					player.playVideo();
+				}
+			}	
+		}
+		
+		function extendDetail() {
+			var pcontroller = $('.player_controller');
+			if( !pcontroller.hasClass('hide_ctrl') ) {
+				$('.player_controller').addClass('detail');
+			}
+		}
+		
+		function shrinkDetail() {
+			var pcontroller = $('.player_controller');
+			if( pcontroller.hasClass('detail') ) {
+				$('.player_controller').removeClass('detail');
+				prepareAutoHideCtrl(3000);
+			}
+		}
+		
+		function switchCtrlVisibility() {
+			console.log('switchCtrlVisibility');
+			var pcontroller = $('.player_controller');
+			if( pcontroller.hasClass('hide_ctrl') ) {
+				pcontroller.removeClass('hide_ctrl');
+				prepareAutoHideCtrl(3000);
+			} else {
+				pcontroller.addClass('hide_ctrl');
+			}
+		}
+		
+		function _playbackTickle() {
+		
+			var current = player.getCurrentTime();
+			var duration = player.getDuration();
+			var loaded = player.getVideoLoadedFraction();
+
+			var percent = 0;
+			
+			if( duration != NaN && duration > 0 ) {
+				percent = current/duration;
+			}
+			
+			var pos = Math.ceil(percent*100);
+						
+			var knobPos = pos-1;
+			if( knobPos < 0 ) {
+				knobPos = pos;
+			} else if( knobPos > 98 ) {
+				knobPos = 98;
+			}
+			
+			$('#playback_progress_bar').css('width',pos+'%');
+			$('#knob').css('left',knobPos+'%');
+			$('#loading_progress_bar').css('width', Math.ceil(loaded*100)+'%');
+		
+		}
+	</script>
+	<script>
+		$(function init() {
+			// get video id
+			vid = MockupParams.vid;
+			if( undefined !== vid ) {
+				loadVideo(vid);
+			} else {
+				console.log('Missing video id');
+			}
+			
+			$('#player_detail').mouseenter(extendDetail);
+			$('#player_detail').mouseleave(shrinkDetail);
+			$('#player_hud').click(switchCtrlVisibility);
+			$('#nav_back').click(popCurrentViewController);
+			$('#player_hud .hud').click(playOrPause);
+		});
+	</script>
+</UIViewController>

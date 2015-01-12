@@ -1,0 +1,523 @@
+<link type='text/css' rel='stylesheet' href='./samples/css/vtube_ad320x50.css'>
+<UIViewController>
+	<!-- nav bar -->
+	<div id='nav' class='top'>
+		<div class='nav_item' id='cat_button'>
+			<icon class='trends'></icon>
+			<title>Popular</title>
+		</div>
+		<div class='sep'></div>
+		<div class='nav_item' id='search'>
+			<icon class='search_blue'></icon>
+			<div>
+				<form><input type='text' name='key' value='Search'/></form>
+			</div>
+		</div>
+		<div class='nav_item' id='ad_banner'></div>
+		<div class='nav_item' id='menu'>
+		</div>
+	</div>
+	<!-- category menu popover -->
+	<popup id='cat' class='hidden'>
+		<list>
+			<!-- user feeds -->
+			<header>My vTube</header>
+			<row>
+				<icon class='trends'></icon>
+				<title>Popular</title>
+			</row>
+			<row>
+				<icon class='recommended'></icon>
+				<title>What to Watch</title>
+			</row>
+			<row data-content-id='sub_feed'>
+				<icon class='sub_all'></icon>
+				<title>My Subscription</title>
+			</row>
+			<row>
+				<icon class='sub_history'></icon>
+				<title>History</title>
+			</row>
+			<row>
+				<icon class='watchlater'></icon>
+				<title>Watch Later</title>
+			</row>
+			
+			<!-- user playlist -->
+			<header>Playlist</header>
+			<row>
+				<icon class='mostpopular'></icon>
+				<title>Favorites</title>
+			</row>
+			<row>
+				<icon class='channel_playlists'></icon>
+				<title>Test Adult Content</title>
+			</row>		
+			<row>
+				<icon class='recommended'></icon>
+				<title>Liked Videos</title>
+			</row>
+			
+			<!-- user subscriptions -->
+			<header>Subscriptions</header>
+			<row>
+				<icon class='crashcourse'></icon>
+				<title>Crash Course</title>
+			</row>
+			<row>
+				<icon class='scottprovidence'></icon>
+				<title>ScottBradleeLovesYa</title>
+			</row>
+			<row>
+				<icon class='harvard'></icon>
+				<title>Harvard University</title>
+			</row>
+			
+			<!-- guided categories -->
+			<header>Categories</header>
+			<row>
+				<icon class='channel'></icon>
+				<title>Paid Channels</title>
+			</row>
+			<row>
+				<icon class='channel'></icon>
+				<title>Music</title>
+			</row>
+			<row>
+				<icon class='channel'></icon>
+				<title>Comedy</title>
+			</row>
+			<row>
+				<icon class='channel'></icon>
+				<title>Film &amp; Entertainment</title>
+			</row>
+			<row>
+				<icon class='channel'></icon>
+				<title>Gaming</title>
+			</row>
+			<row>
+				<icon class='channel'></icon>
+				<title>Beauty &amp; Fashion</title>
+			</row>
+			<row>
+				<icon class='channel'></icon>
+				<title>From TV</title>
+			</row>
+		</list>
+	</popup>
+	<!-- end of category menu popover -->
+	
+	<!-- option menu popover -->
+	<popup id='opt_menu' class='hidden'>
+		<list>
+			<!-- user feeds -->
+			<header>Account</header>
+			<row>
+				<title>Sign in</title>
+			</row>
+			<!-- user playlist -->
+			<header>Playback</header>
+			<row>
+				<title>Background</title>
+				<detail>Enabled</detail>
+			</row>
+			<row>
+				<title>Quality</title>
+				<detail>High</detail>
+			</row>	
+			
+			<row>
+				<title>Download</title>
+				<detail>2 tasks</detail>
+			</row>		
+			
+			<!-- user subscriptions -->
+			<header>Our Apps</header>
+			<row>
+				<icon class='gmap'></icon>
+				<title>Google Map</title>
+			</row>
+			<row>
+				<icon class='bolt'></icon>
+				<title>Bolt Downloader</title>
+			</row>
+			<row>
+				<icon class='camera'></icon>
+				<title>Camera for Kindle Fire</title>
+			</row>	
+			
+			<header >Screen Size</header>	
+			<row>
+				<title id='screen_size'></title>
+			</row>	
+		</list>
+	</popup>
+	<!-- end of option menu popover -->
+	
+	
+	<!-- popover exit hot zone -->
+	<div id='popover_overlay' class='content_blur hidden'></div>
+	
+	<div class='fullscreen_scrollview_y' id='scrollview'>
+	
+		<!-- video feed content -->
+		<feed_list id='default_videos'>
+			<ytvideo data-vid='AcaBI_I0Td0'>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>SpaceX launches</div>
+				<div class='author'>by spaceX</div>
+				<div class="statistic">2k views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>15:31</div>
+				<div class='title'>Witch Hunter</div>
+				<div class='author'>by WB</div>
+				<div class="statistic">12M views. 2 weeks ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>What's the fu**</div>
+				<div class='author'>by WTF</div>
+				<div class="statistic">2k views. 3 weeks ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Show me the money</div>
+				<div class='author'>by WB</div>
+				<div class="statistic">2k views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Spicy femal singer</div>
+				<div class='author'>by Vevo</div>
+				<div class="statistic">2M views. 2 days ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>SpaceX launches</div>
+				<div class='author'>by spaceX</div>
+				<div class="statistic">2k views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Star Wars Ep 7</div>
+				<div class='author'>by Disney</div>
+				<div class="statistic">30M views. 2 weeks ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Star Wars Ep 7 Trailer</div>
+				<div class='author'>by Disney</div>
+				<div class="statistic">21M views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Globalization II</div>
+				<div class='author'>by CrashCourse</div>
+				<div class="statistic">2k views. 1 day ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Remembering and Forgetting</div>
+				<div class='author'>by CrashCourse</div>
+				<div class="statistic">3k views. 4 days ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>SpaceX launches</div>
+				<div class='author'>by spaceX</div>
+				<div class="statistic">2k views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>15:31</div>
+				<div class='title'>Witch Hunter</div>
+				<div class='author'>by WB</div>
+				<div class="statistic">12M views. 2 weeks ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>What's the fu**</div>
+				<div class='author'>by WTF</div>
+				<div class="statistic">2k views. 3 weeks ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Show me the money</div>
+				<div class='author'>by WB</div>
+				<div class="statistic">2k views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Spicy femal singer</div>
+				<div class='author'>by Vevo</div>
+				<div class="statistic">2M views. 2 days ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>SpaceX launches</div>
+				<div class='author'>by spaceX</div>
+				<div class="statistic">2k views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Star Wars Ep 7</div>
+				<div class='author'>by Disney</div>
+				<div class="statistic">30M views. 2 weeks ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Star Wars Ep 7 Trailer</div>
+				<div class='author'>by Disney</div>
+				<div class="statistic">21M views. 1 week ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Globalization II</div>
+				<div class='author'>by CrashCourse</div>
+				<div class="statistic">2k views. 1 day ago</div>				
+			</ytvideo>
+			<ytvideo>
+				<div class='thumb'>
+				</div>				
+				<div class='time'>5:31</div>
+				<div class='title'>Remembering and Forgetting</div>
+				<div class='author'>by CrashCourse</div>
+				<div class="statistic">3k views. 4 days ago</div>				
+			</ytvideo>
+		</feed_list>
+		<!-- end of video feed -->
+		<!-- subscription feed -->
+		<feed_list id='sub_feed' class='hidden'>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>CrashCourse</div>
+				<div class="statistic">4 new videos</div>				
+			</ytchannel>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>Harvard University</div>
+				<div class="statistic">1871 videos</div>				
+			</ytchannel>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>ScottBradleeLovesYa</div>
+				<div class="statistic">1 new video</div>				
+			</ytchannel>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>In59seconds</div>
+				<div class="statistic">2 new videos</div>				
+			</ytchannel>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>Kendo Kiel</div>
+				<div class="statistic">142 videos</div>				
+			</ytchannel>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>Wolfram</div>
+				<div class="statistic">491 videos</div>				
+			</ytchannel>
+			<ytchannel>
+				<div class='thumb'>
+				</div>				
+				<div class='title'>SpaceX</div>
+				<div class="statistic">1 new video</div>				
+			</ytchannel>			
+		</feed_list>
+		<!-- end of subscription feed -->
+	</div>
+	<script type="text/javascript">
+	
+		var lastOffset = 0;
+		var popoverId;
+		var popverSenderId;
+	
+		function showContent(contentId) {
+	
+			all = $('feed_list');
+			for ( var i = 0; i < all.length; i++ ) {
+				a = all[i];
+				e = $(a);
+				feedId = a.id;
+				if( feedId == contentId ) {
+					if( e.hasClass('hidden') ) {
+						e.removeClass('hidden');
+					}
+				} else if( !e.hasClass('hidden') ) {
+					e.addClass('hidden');
+				}
+			}
+					
+		}
+		
+	
+		function showPopover(senderId,pId) {
+		
+			popoverId = pId;
+			popverSenderId = senderId;
+		
+			cat = $('#'+pId);
+			cat.removeClass('hidden');
+			cat.addClass('poped');
+			
+			window.setTimeout(function () {
+				$('#popover_overlay').removeClass('hidden');
+				$('#scrollview').addClass('blur');
+				$('#'+popverSenderId).addClass('highlighted');
+			},333);
+			
+		}
+		
+		function hidePopover() {
+
+			cat = $('#'+popoverId);
+			cat.removeClass('poped');
+			cat.addClass('hidden');
+			
+			$('#popover_overlay').addClass('hidden');
+			$('#'+popverSenderId).removeClass('highlighted');
+			$('#scrollview').removeClass('blur');
+			
+			popoverId = null;
+			popverSenderId = null;
+			
+		}
+		
+		function updateScreenSize() {
+	
+			win = $(window);
+			str = win.width() + 'x' + win.height();
+			
+			$('#screen_size').html(str);
+	
+		}
+		
+		function openVideo(videoId) {
+			src = './samples/vtube_player.html?vid='+encodeURIComponent(videoId);
+			pushViewController(src);
+		}
+
+		$(function init() {
+	
+			$('#cat_button').click(function( event ) {
+				if( $( '#cat' ).hasClass('hidden') ) {
+					showPopover('cat_button','cat');
+				} else {
+					hidePopover();
+				}
+			});
+			
+			$('#menu').click(function( event ) {
+				if( $( '#opt_menu' ).hasClass('hidden') ) {
+					showPopover('menu','opt_menu');
+				} else {
+					hidePopover();
+				}
+			});
+			
+			
+			$('#popover_overlay').click(function(e) {
+				hidePopover();
+			});
+			
+			$('#cat row').click(function() {
+				console.log('click cat row');
+				
+				ref = $(this);
+				ref.addClass('selected');
+				
+				contentId = ref.data('contentId');
+				
+				if( null == contentId || 
+					undefined == contentId || 
+					0 == contentId.length ) {
+					contentId = 'default_videos';
+				}
+							
+				window.setTimeout(function() {
+					ref.removeClass('selected');
+					// assign the value to cat button
+					$('#cat_button').html(ref.html());
+					hidePopover();
+					showContent(contentId);
+				}, 500 );
+				
+			});
+			
+			$('#opt_menu row').click(function() {
+				console.log('click opt row');
+				
+				ref = $(this);
+				ref.addClass('selected');
+							
+				window.setTimeout(function() {
+					ref.removeClass('selected');
+					hidePopover();
+					showContent(contentId);
+				}, 500 );
+				
+			});
+			
+			$('ytvideo').click(function() {
+//				console.log('clicked video ' + this);
+				var self = $(this);
+				var videoId = self.data('vid');
+				if( undefined == videoId ) {
+					videoId = 'Ex8NBCuwcdA'; // stay with me for test :) enjoy
+				}
+//				console.log('video id ' + videoId);
+				if( undefined !== videoId ) {
+					openVideo(videoId);
+				}
+			});
+			
+			updateScreenSize();
+			
+		});
+	</script>
+</UIViewController>

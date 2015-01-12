@@ -1,0 +1,120 @@
+
+list {
+	display: block;
+	width: 100%;
+}
+
+row {
+	display: block;
+}
+
+header {
+	display: block;	
+}
+
+title {
+	display: block;
+}
+
+detail {
+	display: block;
+}
+
+list header {
+	
+	padding-left: 10px;
+	padding-top: 5px;
+	height: 20px;
+	font-size: 0.8em;
+	color: rgba(230,230,230,1);
+	background-color: rgba(100,100,100,0.9);
+	
+}
+
+list row {
+	
+	height: 30px;
+	padding-left: 10px;
+	padding-top: 8px;
+	
+	color: rgba(50,50,50,1);
+	background-color: transparent;
+	
+	/*border-bottom: 1px solid rgba(50,50,50,0.3);*/
+	
+}
+
+list row:last-of-type {
+	margin-bottom: 88px;
+}
+
+list row:last-of-type {
+	border-bottom: 0px;
+}
+
+list row icon {
+
+	width: 24px;
+	height: 24px;
+	margin-right: 5px;
+	border-radius: 3px;
+	float: left;
+	
+}
+
+
+list row icon+title {
+	display: block;
+	float: left;
+	margin-top: 3px;
+	margin-right: 4px;
+}
+
+list row title+detail {
+	display: block;
+	font-size: 0.7em;
+	font-style: bold;
+	color: hsl(210, 80%, 50%);
+	float: right;
+	margin-right: 5px;
+	position: relative;
+	top: -15px;
+}
+
+
+list .selected {
+    -webkit-animation: rowSelection 0.5s; /* Chrome, Safari, Opera */
+    animation: rowSelection 0.5s;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rowSelection {
+    0% {
+    	color: rgba(50,50,50,1);
+	    background-color: transparent;
+    }
+    50% {
+    	color: rgba(230,230,230,1);
+    	background-color: hsl(210, 80%, 50%);
+    }
+    100% {
+    	color: rgba(50,50,50,1);
+        background-color: transparent;
+    }
+}
+
+/* Standard syntax */
+@keyframes rowSelection {
+	0% {
+		color: rgba(50,50,50,1);
+	    background-color: transparent;
+	}
+	50% {
+		color: rgba(230,230,230,1);
+		background-color: hsl(210, 80%, 50%);
+	}
+	100% {
+		color: rgba(50,50,50,1);
+	    background-color: transparent;
+	}
+}
